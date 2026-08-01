@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | GetDustify</title>
+
+```
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --gold: #c5a059;
+        --gold-light: #e5c477;
+        --black: #0b0b0b;
+        --dark: #121212;
+        --card: #181818;
+        --text: #ffffff;
+        --muted: #a7a7a7;
+        --border: rgba(197, 160, 89, 0.25);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Inter", sans-serif;
+        background: var(--black);
+        color: var(--text);
+        line-height: 1.6;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .container {
+        width: min(1180px, 92%);
+        margin: auto;
+    }
+
+    /* NAVBAR */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(11, 11, 11, 0.88);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .navbar {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .logo span {
+        color: var(--gold);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: #ddd;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: var(--gold);
+    }
+
+    .nav-btn {
+        background: var(--gold);
+        color: #000 !important;
+        padding: 11px 18px;
+        border-radius: 30px;
+    }
+
+    .menu-btn {
+        display: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        background:
+            linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.85)),
+            url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=85")
+            center/cover;
+    }
+
+    .hero-content {
+        max-width: 760px;
+        padding-top: 80px;
+    }
+
+    .badge {
+        display: inline-block;
+        color: var(--gold-light);
+        border: 1px solid var(--border);
+        background: rgba(197,160,89,.08);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(42px, 7vw, 78px);
+        line-height: 1.05;
+        margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+        color: var(--gold);
+    }
+
+    .hero p {
+        color: #c8c8c8;
+        max-width: 600px;
+        font-size: 18px;
+        margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 14px 25px;
+        border-radius: 30px;
+        font-weight: 700;
+        display: inline-block;
+        transition: .3s;
+    }
+
+    .btn-primary {
+        background: var(--gold);
+        color: #000;
+    }
+
+    .btn-primary:hover {
+        background: var(--gold-light);
+        transform: translateY(-3px);
+    }
+
+    .btn-outline {
+        border: 1px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .btn-outline:hover {
+        background: var(--gold);
+        color: #000;
+    }
+
+    /* GENERAL */
+    section {
+        padding: 100px 0;
+    }
+
+    .section-heading {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .section-heading small {
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 700;
+    }
+
+    .section-heading h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 5vw, 50px);
+        margin: 10px 0;
+    }
+
+    .section-heading p {
+        color: var(--muted);
+        max-width: 650px;
+        margin: auto;
+    }
+/* BEFORE / AFTER WIPE REVEAL SECTION */
+.wipe-section {
+    background: #0f0f0f;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.wipe-container {
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.wipe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+}
+
+.wipe-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* BEFORE / AFTER WIPE REVEAL SECTION (UPDATED) */
+.wipe-section {
+    background: #0f0f0f;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.wipe-container {
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.wipe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+}
+
+.wipe-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Clean image is underneath */
+.wipe-img-clean {
+    z-index: 1;
+}
+
+/* Dirty image is on top and gets clipped */
+.wipe-img-dirty {
+    z-index: 2;
+    /* Initial width will be controlled by JS, but set to 50% for start */
+    border-right: 2px solid var(--gold); 
+}
+
+/* Drag Handle Line & Button */
+.wipe-slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Initial position will be controlled by JS, but set to 50% for start */
+    width: 4px;
+    background: var(--gold);
+    z-index: 10;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.wipe-slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    background: var(--gold);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
+    pointer-events: none;
+}
+
+/* Floating Labels */
+.wipe-label {
+    position: absolute;
+    bottom: 20px;
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid var(--border);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    z-index: 5;
+    backdrop-filter: blur(5px);
+    pointer-events: none;
+}
+
+.label-dirty {
+    /* Was left, remains left */
+    left: 20px;
+}
+
+.label-clean {
+    /* Was right, remains right */
+    right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wipe-wrapper {
+        height: 340px;
+    }
+}
+    .service-card img {
+        height: 190px;
+        object-fit: cover;
+    }
+
+    .service-content {
+        padding: 22px;
+    }
+
+    .service-content h3 {
+        margin-bottom: 8px;
+    }
+
+    .service-content p {
+        color: var(--muted);
+        font-size: 14px;
+    }
+    /* LIVE PRICE ESTIMATOR */
+.estimator-box {
+    max-width: 650px;
+    margin: 40px auto;
+    background: var(--card);
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.estimator-box h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.estimator-subtitle {
+    color: var(--muted);
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.estimator-result {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.estimator-result span {
+    color: var(--gold);
+    font-size: 28px;
+    font-weight: 800;
+    display: block;
+    margin-top: 5px;
+    font-family: "Playfair Display", serif;
+}
+/* SERVICE QUIZ WIDGET */
+.quiz-box {
+    max-width: 650px;
+    margin: 40px auto;
+    background: var(--card);
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.quiz-step {
+    display: none;
+}
+
+.quiz-step.active-step {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.quiz-option-btn {
+    background: #0e0e0e;
+    border: 1px solid #333;
+    color: white;
+    padding: 20px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    transition: 0.3s;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.quiz-option-btn:hover {
+    border-color: var(--gold);
+    background: rgba(197, 160, 89, 0.05);
+    transform: translateY(-3px);
+}
+
+.quiz-option-btn.selected {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: #000;
+}
+
+.quiz-nav-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+/*==============================
+        WHAT WE DO
+==============================*/
+
+.services-section{
+    background:#111;
+    padding:90px 0;
+    color:#fff;
+    text-align:center;
+}
+
+.services-section h2{
+    color:#d6a84b;
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.section-text{
+    width:70%;
+    margin:auto;
+    color:#d9d9d9;
+    line-height:1.8;
+    margin-bottom:50px;
+}
+
+.services-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+
+}
+
+.service-card{
+
+    background:#1b1b1b;
+    border:1px solid #d6a84b;
+    border-radius:10px;
+    overflow:hidden;
+    text-decoration:none;
+    transition:.4s;
+
+}
+
+.service-card img{
+
+    width:100%;
+    height:180px;
+    object-fit:cover;
+
+}
+
+.service-card h4{
+
+    color:white;
+    padding:18px;
+    font-size:18px;
+    font-weight:600;
+
+}
+
+.service-card:hover{
+
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(214,168,75,.4);
+
+}
+
+.service-card:hover h4{
+
+    color:#d6a84b;
+
+}
+
+    /* WHY US */
+    .why-us {
+        background: #111;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 20px;
+    }
+
+    .feature {
+        text-align: center;
+        padding: 30px 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    .feature-icon {
+        font-size: 35px;
+        margin-bottom: 12px;
+    }
+
+    .feature p {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 8px;
+    }
+/* HOW IT WORKS */
+
+.process-section {
+    background:
+        linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=85")
+        center/cover fixed;
+}
+
+.process-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.process-line {
+    position: absolute;
+    top: 48px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: var(--gold);
+    opacity: .5;
+}
+
+.process-card {
+    position: relative;
+    text-align: center;
+    background: rgba(24,24,24,.88);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 35px 22px 28px;
+    transition: .35s;
+    z-index: 2;
+}
+
+.process-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 50px rgba(0,0,0,.45);
+}
+
+.process-number {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: #000;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 13px;
+    border-radius: 20px;
+}
+
+.process-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0d0d;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    font-size: 28px;
+}
+
+.process-card h3 {
+    margin-bottom: 10px;
+}
+
+.process-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+    /* BOOKING */
+    .booking-box {
+        max-width: 650px;
+        margin: auto;
+        background: var(--card);
+        padding: 35px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 14px;
+        background: #0e0e0e;
+        border: 1px solid #333;
+        border-radius: 8px;
+        color: white;
+        outline: none;
+        font-family: inherit;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--gold);
+    }
+
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+        margin-top: 15px;
+    }
+
+    .full {
+        grid-column: 1 / -1;
+    }
+
+    .form-btn {
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+
+    /* REVIEWS */
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .review-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 25px;
+        border-radius: 16px;
+    }
+
+    .stars {
+        color: var(--gold);
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+    }
+
+    .review-card p {
+        color: #ccc;
+        font-size: 15px;
+    }
+
+    .reviewer {
+        color: var(--gold-light);
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    .review-form {
+        max-width: 600px;
+        margin: 45px auto 0;
+        padding: 30px;
+        background: #111;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+    }
+
+    .review-form h3 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+/* ================= LOCATION SECTION ================= */
+
+.location-section {
+    background: #0b0b0b;
+    padding: 100px 8%;
+    color: white;
+}
+
+
+.location-container {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+
+    gap: 70px;
+    align-items: center;
+}
+
+
+/* MAP */
+
+.map-box {
+    width: 100%;
+    height: 430px;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    border: 1px solid rgba(214, 166, 77, 0.5);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+}
+
+
+/* RIGHT CONTENT */
+
+.location-tag {
+    color: #d6a64d;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+
+.location-content h2 {
+    font-size: 52px;
+    line-height: 1.1;
+
+    margin: 20px 0;
+}
+
+
+.location-content h2 span {
+    color: #d6a64d;
+}
+
+
+.location-content > p {
+    color: #bdbdbd;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    max-width: 500px;
+}
+
+
+/* ADDRESS BOX */
+
+.address-box {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin: 30px 0;
+}
+
+
+.address-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d6a64d;
+
+    color: #111;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+}
+
+
+.address-box h3 {
+    margin: 0 0 6px;
+
+    font-size: 18px;
+}
+
+
+.address-box p {
+    margin: 0;
+
+    color: #aaa;
+
+    line-height: 1.6;
+}
+
+
+/* DIRECTIONS BUTTON */
+
+.direction-btn {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 25px;
+
+    background: #d6a64d;
+
+    color: #111;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.direction-btn:hover {
+    background: white;
+
+    transform: translateY(-3px);
+}
+
+
+.direction-btn span {
+    font-size: 20px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .location-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+
+    .location-content h2 {
+        font-size: 40px;
+    }
+
+
+    .map-box {
+        height: 350px;
+    }
+
+}
+    /* CONTACT */
+    .contact {
+        background: linear-gradient(135deg, #151515, #0c0c0c);
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        text-align: center;
+    }
+
+    .contact-item {
+        padding: 25px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+    }
+
+    .contact-item h3 {
+        color: var(--gold);
+        margin-bottom: 8px;
+    }
+
+    .contact-item p {
+        color: #ccc;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 30px 0;
+        text-align: center;
+        border-top: 1px solid #222;
+        color: var(--muted);
+    }
+
+    footer span {
+        color: var(--gold);
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        width: 58px;
+        height: 58px;
+        background: #25D366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+        z-index: 999;
+        box-shadow: 0 8px 25px rgba(0,0,0,.4);
+    }
+
+    /* CHATBOT FLOAT */
+    .chatbot-float {
+        position: fixed;
+        right: 92px;
+        bottom: 22px;
+        width: 58px;
+        height: 58px;
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: #000;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 999;
+        box-shadow: 0 8px 25px rgba(0,0,0,.45);
+        cursor: pointer;
+    }
+
+    .chatbot-panel {
+        position: fixed;
+        right: 22px;
+        bottom: 92px;
+        width: min(360px, calc(100vw - 20px));
+        background: rgba(18, 18, 18, 0.98);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(18px);
+        transition: 0.25s ease;
+    }
+
+    .chatbot-panel.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .chatbot-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: linear-gradient(135deg, #1b1b1b, #0d0d0d);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .chatbot-header div {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .chatbot-header strong {
+        font-size: 15px;
+    }
+
+    .chatbot-header small {
+        color: #9ae6a8;
+        font-size: 11px;
+    }
+
+    .chatbot-close {
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .chatbot-body {
+        max-height: 320px;
+        overflow-y: auto;
+        padding: 16px 14px 8px;
+        background: #0f0f0f;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chatbot-bubble {
+        max-width: 85%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
+
+    .chatbot-bubble.bot {
+        background: #1d1d1d;
+        color: white;
+        border: 1px solid var(--border);
+        align-self: flex-start;
+    }
+
+    .chatbot-bubble.user {
+        background: var(--gold);
+        color: #000;
+        align-self: flex-end;
+    }
+
+    .chatbot-wa-wrap {
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .chatbot-wa-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #25D366;
+        color: #fff;
+        padding: 11px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    }
+
+    .chatbot-wa-btn:hover {
+        background: #1ebd59;
+    }
+
+    .chatbot-quick {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 12px 12px;
+        background: #0f0f0f;
+    }
+
+    .chatbot-quick button {
+        background: #1a1a1a;
+        color: white;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 8px 10px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .chatbot-input-row {
+        display: flex;
+        gap: 10px;
+        padding: 12px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        background: #111;
+    }
+
+    .chatbot-input-row input {
+        flex: 1;
+        background: #0d0d0d;
+        border: 1px solid #333;
+        border-radius: 12px;
+        color: white;
+        padding: 12px 14px;
+        outline: none;
+        font: inherit;
+    }
+
+    .chatbot-send {
+        background: var(--gold);
+        color: #000;
+        border: none;
+        border-radius: 12px;
+        padding: 12px 16px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .menu-btn {
+            display: block;
+        }
+.process-wrapper {
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+
+.process-line {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    width: 1px;
+    height: auto;
+}
+
+.process-card {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+}
+        .nav-links {
+            position: absolute;
+            top: 78px;
+            left: 0;
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            background: #111;
+            padding: 25px;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .hero {
+            min-height: 90vh;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .full {
+            grid-column: auto;
+        }
+
+        section {
+            padding: 75px 0;
+        }
+    }
+
+    .service-detail-card {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 30px;
+        margin-bottom: 25px;
+    }
+    .service-detail-card .sd-text { flex: 1.2; }
+    .service-detail-card .sd-img { flex: 1; border-radius: 12px; overflow: hidden; }
+    .service-detail-card .sd-img img { height: 220px; object-fit: cover; }
+    .service-detail-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 10px; }
+    .service-detail-card p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+    .category-heading { margin: 60px 0 25px; }
+    .category-heading h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 26px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    @media(max-width: 768px) {
+        .service-detail-card { flex-direction: column-reverse; }
+        .service-detail-card .sd-img img { height: 180px; }
+    }
+    .sd-modal-overlay {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.75);
+        z-index: 3000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    .sd-modal-overlay.active { display: flex; }
+    .sd-modal-box {
+        background: var(--card);
+        border: 1px solid var(--gold);
+        border-radius: 16px;
+        padding: 30px;
+        max-width: 420px;
+        width: 100%;
+        position: relative;
+    }
+    .sd-modal-box h3 { font-family: 'Playfair Display', serif; margin-bottom: 15px; text-align: center; }
+    .sd-modal-close {
+        position: absolute; top: 12px; right: 16px;
+        cursor: pointer; font-size: 22px; color: var(--muted);
+    }
+    .sd-modal-box input {
+        width: 100%; padding: 14px; margin-bottom: 12px;
+        background: #0e0e0e; border: 1px solid #333; border-radius: 8px;
+        color: white; outline: none; font-family: inherit;
+    }
+</style>
+
+```
+
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a href="getdustify.html#home" class="logo">Get<span>Dustify</span></a>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="getdustify.html#home">Home</a></li>
+            <li><a href="services.html" style="color: var(--gold);">Services</a></li>
+            <li><a href="getdustify.html#why-us">Why Us</a></li>
+            <li><a href="getdustify.html#reviews">Reviews</a></li>
+            <li><a href="getdustify.html#contact">Contact</a></li>
+            <li><a href="booking.html" class="nav-btn">Book Now</a></li>
+        </ul>
+    </div>
+</header>
+
+<section style="padding-top: 160px; padding-bottom: 40px;">
+    <div class="container">
+        <div class="section-heading">
+            <small>Our Services</small>
+            <h2>Everything We Offer</h2>
+            <p>Explore our complete range of professional home, office and lifestyle services. Tap "Book This Service" on any service to send your request straight to WhatsApp.</p>
+        </div>
+    </div>
+</section>
+
+<section style="padding-top: 0;">
+    <div class="container">
+
+        <div class="category-heading"><h3>Deep Cleaning</h3></div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Residential Cleaning</h3>
+                <p>Thorough, top-to-bottom deep cleaning for houses and apartments, covering every room, surface and corner using eco-friendly products.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Residential Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Commercial Cleaning</h3>
+                <p>Reliable, scheduled cleaning solutions for shops, offices and commercial spaces to keep your business spotless and welcoming.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Commercial Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1740657254989-42fe9c3b8cce?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Industrial Cleaning</h3>
+                <p>Heavy-duty cleaning for warehouses, factories and industrial units, handled by trained crews with the right equipment.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Industrial Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1642505172378-a6f5e5b15580?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Apartment Cleaning</h3>
+                <p>Full apartment cleaning packages tailored for compact spaces, ideal for regular upkeep or one-time deep cleans.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Apartment Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1618038483079-bfe64dcb17f1?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Post Construction Cleaning</h3>
+                <p>Removal of dust, debris and construction residue so your newly built or renovated space is ready to move into.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Post Construction Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Move In / Out Cleaning</h3>
+                <p>Detailed cleaning before moving in or after moving out, so the property is spotless for its next chapter.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Move In / Out Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1697124510483-6de81eb6d493?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Pre and Post Event Cleaning</h3>
+                <p>Venue preparation before your event and complete clean-up afterward, so you can focus on the occasion.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Pre and Post Event Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Janitorial Services</h3>
+                <p>Ongoing daily or weekly janitorial support for offices and facilities to maintain a consistently clean environment.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Janitorial Services')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1647381518264-97ff1835026f?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Floor Cleaning</h3>
+                <p>Professional floor scrubbing, polishing and sanitizing for tile, marble, wood and vinyl surfaces.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Floor Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1686178827149-6d55c72d81df?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Facade and Window Cleaning</h3>
+                <p>Streak-free exterior window and facade cleaning that keeps your building looking sharp from the outside in.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Facade and Window Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Solar Panel Cleaning</h3>
+                <p>Safe, careful cleaning of solar panels to remove dust build-up and help maintain peak energy efficiency.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Solar Panel Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1745187946672-2c1d8cf26a2b?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Water Tank Cleaning</h3>
+                <p>Complete water tank cleaning and sanitization to ensure the water you use every day stays safe and hygienic.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Water Tank Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1541941392960-652036ca567e?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="category-heading"><h3>Upholstery Cleaning</h3></div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Sofa Cleaning</h3>
+                <p>Deep fabric and leather sofa cleaning that removes stains, odors and allergens, restoring that fresh, new feel.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Sofa Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Carpet Cleaning</h3>
+                <p>Professional carpet shampooing and steam cleaning that lifts dirt, dust mites and stains from deep within the fibers.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Carpet Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Mattress Cleaning</h3>
+                <p>Sanitizing mattress cleaning that targets dust mites, stains and odors for a healthier night's sleep.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Mattress Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1658500353815-4d22b7cc6dd3?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Curtain Cleaning</h3>
+                <p>Gentle yet thorough curtain and drapery cleaning that removes dust and odors without damaging delicate fabrics.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Curtain Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1598402019828-273d563e4554?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Blinds Cleaning</h3>
+                <p>Detailed blind cleaning that reaches every slat, removing built-up dust and keeping your windows looking crisp.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Blinds Cleaning')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1590251024078-8a6d9f90b02d?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="category-heading"><h3>Pest Management</h3></div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Pest Control</h3>
+                <p>Targeted pest control treatments for cockroaches, ants, rodents and other common household pests.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Pest Control')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Fumigation</h3>
+                <p>Comprehensive fumigation services that eliminate insects and larvae at the source, for lasting protection.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Fumigation')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1711900177627-1182b446bc8f?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Disinfection and Sanitizing Services</h3>
+                <p>Hospital-grade disinfection and sanitizing for homes, offices and shared spaces to reduce the spread of germs.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Disinfection and Sanitizing Services')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+        <div class="service-detail-card">
+            <div class="sd-text">
+                <h3>Dengue Control Spray</h3>
+                <p>Preventive dengue and mosquito control spraying for homes and outdoor areas, especially during high-risk seasons.</p>
+                <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Dengue Control Spray')">Book This Service</button>
+            </div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1638820842410-dbe10a8a61f0?auto=format&fit=crop&w=900&q=80"></div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        © 2026 <span>GetDustify</span>. All Rights Reserved.
+    </div>
+</footer>
+
+<button class="chatbot-float" id="chatbotToggle" aria-label="Open assistant">🤖</button>
+<div class="chatbot-panel" id="chatbotPanel">
+    <div class="chatbot-header">
+        <div>
+            <strong>Haseeb from GetDustify</strong>
+            <small>Online</small>
+        </div>
+        <button class="chatbot-close" id="chatbotClose" aria-label="Close assistant">✕</button>
+    </div>
+    <div class="chatbot-body" id="chatbotMessages">
+        <div class="chatbot-bubble bot">Hi! I can help with services, pricing, and booking. Ask me anything.</div>
+    </div>
+    <div class="chatbot-quick">
+        <button type="button" data-message="Services">Services</button>
+        <button type="button" data-message="Pricing">Pricing</button>
+        <button type="button" data-message="Book a service">Book</button>
+        <button type="button" data-message="Contact us">Contact</button>
+    </div>
+    <div class="chatbot-input-row">
+        <input id="chatbotInput" type="text" placeholder="Type your message..." />
+        <button type="button" class="chatbot-send" id="chatbotSend">Send</button>
+    </div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/923712474554" target="_blank">☎ </a>
+
+<!-- BOOKING MODAL -->
+<div class="sd-modal-overlay" id="sdModalOverlay">
+    <div class="sd-modal-box">
+        <span class="sd-modal-close" onclick="closeBookingModal()">×</span>
+        <h3 id="sdModalServiceName">Book Service</h3>
+        <input type="text" id="sdModalName" placeholder="Your Full Name *">
+        <input type="tel" id="sdModalPhone" placeholder="Phone Number *">
+        <button class="btn btn-primary form-btn" style="width:100%; border:none; cursor:pointer;" onclick="submitServiceBooking()">Send on WhatsApp 📲</button>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    const chatbotPanel = document.getElementById("chatbotPanel");
+    const chatbotToggle = document.getElementById("chatbotToggle");
+    const chatbotClose = document.getElementById("chatbotClose");
+    const chatbotInput = document.getElementById("chatbotInput");
+    const chatbotSend = document.getElementById("chatbotSend");
+    const chatbotMessages = document.getElementById("chatbotMessages");
+
+    function addChatbotMessage(text, sender = "bot") {
+        const bubble = document.createElement("div");
+        bubble.className = "chatbot-bubble " + sender;
+        bubble.textContent = text;
+        chatbotMessages.appendChild(bubble);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function detectLanguage(message) {
+        const lower = message.toLowerCase();
+        const urduPattern = /[ا-ی]/ || /(kya|kia|aap|hum|ham|yeh|sawal|service|booking|contact|whatsapp|price|pricing|lahore)/i;
+        return urduPattern.test(message) ? "ur" : "en";
+    }
+
+    function getChatbotReply(message) {
+        const text = message.toLowerCase();
+        const lang = detectLanguage(message);
+
+        const rules = [
+            { key: "hello|hi|hey", en: "Hello! I can help with deep cleaning, pest control, sofa cleaning, AC services, and booking details.", ur: "Assalamualaikum! Main deep cleaning, pest control, sofa cleaning, AC services aur booking details mein madad kar sakta hoon." },
+            { key: "service|services", en: "We offer deep cleaning, sofa/carpet cleaning, AC repair, pest control, disinfection, water tank cleaning, and car detailing.", ur: "Hum deep cleaning, sofa/carpet cleaning, AC repair, pest control, disinfection, water tank cleaning, aur car detailing provide karte hain." },
+            { key: "price|pricing|quote|rate", en: "Pricing depends on the service, area, and size. Please share the service and location for the right guidance.", ur: "Qeemat service, area aur size par depend karti hai. Service aur location bata dein taake sahi guidance di ja sake." },
+            { key: "deep cleaning", en: "Our deep cleaning includes kitchen, bathroom, floors, windows, and sanitization for a fresh, hygienic home.", ur: "Humari deep cleaning mein kitchen, bathroom, floors, windows, aur sanitization shamil hota hai." },
+            { key: "sofa|carpet", en: "Sofa and carpet cleaning helps remove dust, stains, and allergens with safe, effective treatment.", ur: "Sofa aur carpet cleaning se dust, stains aur allergens remove hote hain." },
+            { key: "pest|fumigation|cockroach|dengue", en: "We provide fumigation, cockroach control, bed bug treatment, and dengue spray for a safer space.", ur: "Hum fumigation, cockroach control, bed bug treatment aur dengue spray provide karte hain." },
+            { key: "\\bac\\b|air conditioner", en: "We handle AC maintenance, cleaning, and repair for homes and offices.", ur: "Hum AC maintenance, cleaning aur repair ke services provide karte hain." },
+            { key: "book|booking|appointment", en: "You can book from the booking page or send your request on WhatsApp.", ur: "Aap booking page se book kar sakte hain ya WhatsApp par request bhej sakte hain." },
+            { key: "contact|call|number|whatsapp", en: "You can reach us on WhatsApp at +92 371 2474554.", ur: "Aap hum se WhatsApp par +92 371 2474554 par rabta kar sakte hain." },
+            { key: "location|lahore", en: "We serve customers across Lahore, Pakistan.", ur: "Hum Lahore, Pakistan mein customers ko service dete hain." },
+            { key: "thank|thanks", en: "You’re welcome! I’m happy to help.", ur: "Aapka shukriya! Main madad karne ke liye khush hoon." }
+        ];
+
+        for (const rule of rules) {
+            if (new RegExp(rule.key, "i").test(text)) {
+                return rule[lang];
+            }
+        }
+
+        return null;
+    }
+
+    function getUnknownQuestionMessage(message) {
+        const lang = detectLanguage(message);
+        if (lang === "ur") {
+            return "Yeh ek acha sawaal hai! Iska sahi jawab dene ke liye main ne yeh humari team tak forward kar diya hai — wo jald hi aapse WhatsApp par khud rabta karenge.";
+        }
+        return "Great question! I've forwarded this to our team, and they'll personally reach out to you on WhatsApp shortly.";
+    }
+
+    function buildTeamWhatsAppLink(question) {
+        const teamNumber = "923712474554";
+        const message = `Hello GetDustify team! I asked something on your website that needs a proper answer.\n\nMy question: ${question}\n\nCan you please help me directly here?`;
+        return "https://wa.me/" + teamNumber + "?text=" + encodeURIComponent(message);
+    }
+
+    function addChatbotWhatsAppButton(question) {
+        const wrap = document.createElement("div");
+        wrap.className = "chatbot-bubble bot chatbot-wa-wrap";
+
+        const link = document.createElement("a");
+        link.href = buildTeamWhatsAppLink(question);
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.className = "chatbot-wa-btn";
+        link.textContent = "Continue on WhatsApp 💬";
+
+        wrap.appendChild(link);
+        chatbotMessages.appendChild(wrap);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function sendChatbotMessage(rawMessage) {
+        const message = rawMessage.trim();
+        if (!message) return;
+
+        addChatbotMessage(message, "user");
+        const reply = getChatbotReply(message);
+
+        setTimeout(() => {
+            if (!reply) {
+                const unknownMessage = getUnknownQuestionMessage(message);
+                addChatbotMessage(unknownMessage, "bot");
+                addChatbotWhatsAppButton(message);
+                return;
+            }
+
+            addChatbotMessage(reply, "bot");
+            if (message.toLowerCase().includes("book") || message.toLowerCase().includes("booking")) {
+                addChatbotMessage("You can also send your request directly on WhatsApp for faster confirmation.", "bot");
+            }
+        }, 250);
+
+        chatbotInput.value = "";
+    }
+
+    chatbotToggle.addEventListener("click", () => {
+        chatbotPanel.classList.toggle("open");
+        if (chatbotPanel.classList.contains("open")) {
+            chatbotInput.focus();
+        }
+    });
+
+    chatbotClose.addEventListener("click", () => {
+        chatbotPanel.classList.remove("open");
+    });
+
+    chatbotSend.addEventListener("click", () => {
+        sendChatbotMessage(chatbotInput.value);
+    });
+
+    chatbotInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            sendChatbotMessage(chatbotInput.value);
+        }
+    });
+
+    document.querySelectorAll(".chatbot-quick button").forEach((button) => {
+        button.addEventListener("click", () => {
+            sendChatbotMessage(button.dataset.message);
+        });
+    });
+
+    let selectedServiceForBooking = "";
+
+    function openBookingModal(serviceName) {
+    // Redirects to booking.html with the selected service passed in the URL query string
+    window.location.href = "booking.html?service=" + encodeURIComponent(serviceName);
+}
+
+    function closeBookingModal() {
+        document.getElementById("sdModalOverlay").classList.remove("active");
+    }
+
+    function submitServiceBooking() {
+        const name = document.getElementById("sdModalName").value.trim();
+        const phone = document.getElementById("sdModalPhone").value.trim();
+
+        if (!name || !phone) {
+            alert("Please fill in your Name and Phone Number to book!");
+            return;
+        }
+
+        const message = `Hello GetDustify! I want to book a service.
+
+Service: ${selectedServiceForBooking}
+Name: ${name}
+Phone: ${phone}`;
+
+        const url = "https://wa.me/923712474554?text=" + encodeURIComponent(message);
+        window.open(url, "_blank");
+        closeBookingModal();
+    }
+</script>
+
+</body>
+</html>
