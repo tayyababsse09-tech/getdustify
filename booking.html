@@ -67,11 +67,32 @@
         .logo {
             font-size: 25px;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: 0.5px;
+        }
+
+        .logo a {
+            text-transform: uppercase;
+            display: inline-block;
+            background: linear-gradient(135deg, #fceabb 0%, var(--gold-light) 25%, var(--gold) 50%, var(--gold-light) 75%, #fceabb 100%);
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.55));
+            transition: background-position 0.6s ease, filter 0.3s ease;
+        }
+
+        .logo a:hover {
+            background-position: right center;
+            filter: drop-shadow(0 0 16px rgba(197, 160, 89, 0.85));
         }
 
         .logo span {
-            color: var(--gold);
+            background: inherit;
+            background-size: inherit;
+            -webkit-background-clip: inherit;
+            background-clip: inherit;
+            -webkit-text-fill-color: inherit;
         }
 
         .nav-links {
@@ -428,16 +449,23 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .menu-btn { display: block; }
+            .navbar { flex-wrap: wrap; row-gap: 8px; min-height: auto; padding: 12px 0; }
             .nav-links {
-                position: absolute;
-                top: 78px; left: 0; width: 100%;
-                display: none; flex-direction: column;
-                background: #111; padding: 25px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px 14px;
             }
-            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 12.5px; }
+            .nav-btn { padding: 7px 14px; }
+            .logo { font-size: 20px; }
             .form-grid { grid-template-columns: 1fr; }
             .booking-box { padding: 25px 20px; }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links { gap: 6px 10px; }
+            .nav-links a { font-size: 11.5px; }
         }
     </style>
 </head>
@@ -446,7 +474,7 @@
 <header>
     <nav class="navbar">
     <div class="logo">
-        <a href="getdustify.html">GetDustify<span>.</span></a>
+        <a href="getdustify.html">Get<span>Dustify</span></a>
     </div>
     <ul class="nav-links" id="navLinks">
         <li><a href="getdustify.html#home">Home</a></li>
@@ -569,10 +597,6 @@
 <a class="whatsapp" href="https://wa.me/923712474554" target="_blank">💬</a>
 
 <script>
-    function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-    }
-
     function sendBookingWhatsApp(event) {
         event.preventDefault();
 
