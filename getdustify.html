@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -19,7 +19,7 @@
             --card: #181818;
             --text: #ffffff;
             --muted: #a7a7a7;
-            --border: rgba(197, 160, 89, 0.25);
+            --border: rgba(197, 160, 89, 0.35);
         }
 
         * {
@@ -55,11 +55,14 @@
         header {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(11, 11, 11, 0.88);
+            background: rgba(11, 11, 11, 0.92);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         .navbar {
@@ -67,70 +70,116 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            width: min(1180px, 92%);
+            margin: 0 auto;
         }
 
-        .logo {
+        /* BRAND LOGO */
+        .logo a {
             font-size: 25px;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fceabb 0%, var(--gold-light) 25%, var(--gold) 50%, var(--gold-light) 75%, #fceabb 100%);
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.55));
+            transition: background-position 0.6s ease, filter 0.3s ease;
+        }
+
+        .logo a:hover {
+            background-position: right center;
+            filter: drop-shadow(0 0 16px rgba(197, 160, 89, 0.85));
         }
 
         .logo span {
-            color: var(--gold);
+            background: inherit;
+            background-size: inherit;
+            -webkit-background-clip: inherit;
+            background-clip: inherit;
+            -webkit-text-fill-color: inherit;
         }
 
+        /* Navigation Links Container */
         .nav-links {
             display: flex;
-            gap: 30px;
             align-items: center;
             list-style: none;
+            gap: 35px;
         }
 
-        .nav-links a {
-            color: #ddd;
-            font-size: 14px;
+        .nav-links li a {
+            text-decoration: none;
+            color: #e2e3e3;
+            font-size: 1.05rem;
             font-weight: 600;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        .nav-links a:hover {
+        .nav-links li a:hover {
             color: var(--gold);
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px rgba(197, 160, 89, 0.5);
         }
 
-        .nav-btn {
-            background: var(--gold);
+        .nav-links .nav-btn {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: #000 !important;
-            padding: 11px 18px;
+            padding: 10px 22px;
+            font-size: 1.05rem;
             border-radius: 30px;
+            box-shadow: 0 6px 18px rgba(197, 160, 89, 0.4), inset 0 1px 1px rgba(255,255,255,0.6);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        /* Navigation Links Container */
-.nav-links {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 35px; /* Ye links ke beech ka distance (gap) barha dega */
-}
 
-/* Individual Links */
-.nav-links li a {
-    text-decoration: none;
-    color: #e2e3e3; /* Ya aapka jo bhi primary text color hai */
-    font-size: 1.15rem; /* Size thora bada aur clear dikhne ke liye */
-    font-weight: 600; /* Text ko thora prominent karne ke liye */
-    transition: all 0.3s ease;
-}
-
-/* Book Now Button adjustment */
-.nav-links .nav-btn {
-    padding: 10px 22px;
-    font-size: 1.05rem;
-}
+        .nav-links .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.7);
+        }
 
         .menu-btn {
             display: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: var(--gold);
+        }
+
+        /* ==================== MOBILE NAVBAR (always visible, no hamburger) ==================== */
+        @media (max-width: 900px) {
+            .navbar {
+                flex-wrap: wrap;
+                row-gap: 8px;
+                min-height: auto;
+                padding: 12px 16px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px 14px;
+            }
+            .nav-links li a {
+                font-size: 12.5px;
+            }
+            .nav-links .nav-btn {
+                padding: 7px 14px;
+                font-size: 12.5px;
+            }
+            .logo a {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 6px 10px;
+            }
+            .nav-links li a {
+                font-size: 11px;
+            }
         }
 
         /* HERO */
@@ -140,25 +189,29 @@
             align-items: center;
             position: relative;
             background:
-                linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.85)),
+                linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.9)),
                 url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=85")
                 center/cover;
+            overflow: hidden;
         }
 
         .hero-content {
             max-width: 760px;
             padding-top: 80px;
+            transform-style: preserve-3d;
         }
 
         .badge {
             display: inline-block;
             color: var(--gold-light);
             border: 1px solid var(--border);
-            background: rgba(197,160,89,.08);
-            padding: 8px 16px;
+            background: rgba(197,160,89,.12);
+            padding: 8px 18px;
             border-radius: 30px;
             font-size: 13px;
             margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 0 10px rgba(197,160,89,0.2);
+            backdrop-filter: blur(5px);
         }
 
         .hero h1 {
@@ -166,10 +219,14 @@
             font-size: clamp(42px, 7vw, 78px);
             line-height: 1.05;
             margin-bottom: 25px;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.9);
         }
 
         .hero h1 span {
             color: var(--gold);
+            background: linear-gradient(135deg, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
@@ -177,6 +234,7 @@
             max-width: 600px;
             font-size: 18px;
             margin-bottom: 32px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .hero-buttons {
@@ -186,31 +244,37 @@
         }
 
         .btn {
-            padding: 14px 25px;
+            padding: 14px 28px;
             border-radius: 30px;
             font-weight: 700;
             display: inline-block;
-            transition: .3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
         .btn-primary {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: #000;
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
         }
 
         .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-3px);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(197, 160, 89, 0.6);
         }
 
         .btn-outline {
-            border: 1px solid var(--gold);
+            border: 2px solid var(--gold);
             color: var(--gold);
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
         }
 
         .btn-outline:hover {
             background: var(--gold);
             color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
         }
 
         /* GENERAL */
@@ -234,6 +298,7 @@
             font-family: "Playfair Display", serif;
             font-size: clamp(32px, 5vw, 50px);
             margin: 10px 0;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .section-heading p {
@@ -256,9 +321,16 @@
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--border);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(197, 160, 89, 0.15);
             user-select: none;
             -webkit-user-select: none;
+            transform: scale(1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .wipe-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.9), 0 0 40px rgba(197, 160, 89, 0.25);
         }
 
         .wipe-wrapper {
@@ -284,7 +356,8 @@
 
         .wipe-img-dirty {
             z-index: 2;
-            border-right: 2px solid var(--gold); 
+            border-right: 3px solid var(--gold); 
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
         }
 
         .wipe-slider-handle {
@@ -296,6 +369,7 @@
             z-index: 10;
             transform: translateX(-50%);
             pointer-events: none;
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.8);
         }
 
         .wipe-slider-button {
@@ -303,9 +377,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 46px;
-            height: 46px;
-            background: var(--gold);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: #000;
             border-radius: 50%;
             display: flex;
@@ -313,23 +387,24 @@
             justify-content: center;
             font-weight: 800;
             font-size: 16px;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.8), inset 0 2px 2px rgba(255,255,255,0.8);
             pointer-events: none;
         }
 
         .wipe-label {
             position: absolute;
             bottom: 20px;
-            padding: 6px 14px;
-            background: rgba(0, 0, 0, 0.75);
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.85);
             border: 1px solid var(--border);
             color: #fff;
             font-size: 13px;
             font-weight: 600;
             border-radius: 20px;
             z-index: 5;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             pointer-events: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
         .label-dirty { left: 20px; }
@@ -339,11 +414,11 @@
         .estimator-box, .quiz-box {
             max-width: 650px;
             margin: 40px auto;
-            background: var(--card);
+            background: linear-gradient(145deg, #1c1c1c, #141414);
             padding: 35px;
             border-radius: 20px;
             border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
         .estimator-box h3 {
@@ -405,15 +480,18 @@
             cursor: pointer;
             text-align: center;
             font-weight: 600;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             font-family: inherit;
             font-size: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         .quiz-option-btn:hover, .quiz-option-btn.selected {
             border-color: var(--gold);
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: #000;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.4);
         }
 
         .quiz-nav-btns {
@@ -435,6 +513,7 @@
             font-size: 40px;
             font-weight: bold;
             margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
         .section-text {
@@ -452,20 +531,49 @@
         }
 
         .service-card {
-            background: #1b1b1b;
-            border: 1px solid #d6a84b;
-            border-radius: 10px;
+            background: linear-gradient(145deg, #1e1e1e, #141414);
+            border: 1px solid var(--border);
+            border-radius: 14px;
             overflow: hidden;
             text-decoration: none;
-            transition: .4s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
         }
 
         .service-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-icon-wrap {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 50% 40%, #262626 0%, #161616 75%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .service-icon-wrap svg {
+            width: 64px;
+            height: 64px;
+            stroke: #d6a84b;
+            fill: none;
+            stroke-width: 2.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.5s ease, stroke 0.3s ease;
+        }
+
+        .service-card:hover .service-icon-wrap svg {
+            transform: scale(1.12);
+            stroke: #f0cf8a;
         }
 
         .service-card h4 {
@@ -473,15 +581,21 @@
             padding: 18px;
             font-size: 18px;
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(214,168,75,.4);
+            transform: translateY(-12px) rotateX(2deg);
+            border-color: var(--gold);
+            box-shadow: 0 25px 45px rgba(197, 160, 89, 0.3);
+        }
+
+        .service-card:hover img {
+            transform: scale(1.08);
         }
 
         .service-card:hover h4 {
-            color: #d6a84b;
+            color: var(--gold-light);
         }
 
         /* WHY US */
@@ -494,15 +608,25 @@
 
         .feature {
             text-align: center;
-            padding: 30px 20px;
-            background: var(--card);
+            padding: 35px 20px;
+            background: linear-gradient(145deg, #1a1a1a, #121212);
             border: 1px solid var(--border);
             border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
         }
 
         .feature-icon {
-            font-size: 35px;
+            font-size: 38px;
             margin-bottom: 12px;
+            display: inline-block;
+            filter: drop-shadow(0 5px 10px rgba(197, 160, 89, 0.4));
         }
 
         .feature p {
@@ -526,11 +650,18 @@
         }
 
         .trust-card {
-            background: #121212;
-            padding: 25px;
+            background: linear-gradient(145deg, #141414, #0a0a0a);
+            padding: 30px 25px;
             border-radius: 15px;
             border: 1px solid rgba(255,255,255,0.05);
             text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(197,160,89,0.3);
         }
 
         .trust-card h4 {
@@ -566,26 +697,28 @@
             top: 48px;
             left: 12%;
             right: 12%;
-            height: 1px;
-            background: var(--gold);
-            opacity: .5;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: .6;
         }
 
         .process-card {
             position: relative;
             text-align: center;
-            background: rgba(24,24,24,.88);
+            background: rgba(24, 24, 24, 0.92);
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 35px 22px 28px;
-            transition: .35s;
+            transition: all 0.35s ease;
             z-index: 2;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
         }
 
         .process-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px) scale(1.02);
             border-color: var(--gold);
-            box-shadow: 0 20px 50px rgba(0,0,0,.45);
+            box-shadow: 0 25px 50px rgba(197, 160, 89, 0.25);
         }
 
         .process-number {
@@ -593,12 +726,13 @@
             top: -16px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: #000;
             font-size: 12px;
             font-weight: 800;
-            padding: 7px 13px;
+            padding: 7px 15px;
             border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .process-icon {
@@ -612,6 +746,7 @@
             border: 1px solid var(--gold);
             border-radius: 50%;
             font-size: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), inset 0 0 10px rgba(197,160,89,0.2);
         }
 
         /* FORM CONTROLS */
@@ -626,13 +761,18 @@
             padding: 14px;
             background: #0e0e0e;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
             outline: none;
             font-family: inherit;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.3), inset 0 2px 4px rgba(0,0,0,0.5);
+        }
 
         textarea {
             min-height: 120px;
@@ -657,16 +797,24 @@
         }
 
         .review-card {
-            background: var(--card);
+            background: linear-gradient(145deg, #1c1c1c, #141414);
             border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 16px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
         }
 
         .stars {
             color: var(--gold);
             letter-spacing: 3px;
             margin-bottom: 12px;
+            font-size: 18px;
+            text-shadow: 0 2px 8px rgba(197,160,89,0.5);
         }
 
         .review-card p { color: #ccc; font-size: 15px; }
@@ -675,10 +823,11 @@
         .review-form {
             max-width: 600px;
             margin: 45px auto 0;
-            padding: 30px;
-            background: #111;
-            border-radius: 18px;
+            padding: 35px;
+            background: linear-gradient(145deg, #161616, #0e0e0e);
+            border-radius: 20px;
             border: 1px solid var(--border);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
         }
 
         .review-form h3 { margin-bottom: 20px; text-align: center; }
@@ -705,7 +854,7 @@
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(214, 166, 77, 0.5);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
         }
 
         .map-box iframe { width: 100%; height: 100%; border: none; }
@@ -718,16 +867,18 @@
         .address-icon {
             width: 55px; height: 55px;
             display: flex; align-items: center; justify-content: center;
-            background: #d6a64d; color: #111; border-radius: 50%; font-size: 24px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #111; border-radius: 50%; font-size: 24px;
+            box-shadow: 0 8px 20px rgba(197,160,89,0.4);
         }
 
         .direction-btn {
             display: inline-flex; align-items: center; gap: 12px;
-            padding: 15px 25px; background: #d6a64d; color: #111;
+            padding: 15px 28px; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #111;
             text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
         }
 
-        .direction-btn:hover { background: white; transform: translateY(-3px); }
+        .direction-btn:hover { background: white; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 255, 255, 0.4); }
 
         /* CONTACT */
         .contact { background: linear-gradient(135deg, #151515, #0c0c0c); }
@@ -738,7 +889,15 @@
             text-align: center;
         }
 
-        .contact-item { padding: 25px; border: 1px solid var(--border); border-radius: 15px; }
+        .contact-item { 
+            padding: 30px 20px; 
+            border: 1px solid var(--border); 
+            border-radius: 18px; 
+            background: linear-gradient(145deg, #181818, #101010);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .contact-item:hover { transform: translateY(-5px); border-color: var(--gold); }
         .contact-item h3 { color: var(--gold); margin-bottom: 8px; }
         .contact-item p { color: #ccc; }
 
@@ -746,7 +905,29 @@
         footer { padding: 30px 0; text-align: center; border-top: 1px solid #222; color: var(--muted); }
         footer span { color: var(--gold); }
 
-        /* WHATSAPP FLOAT */
+        /* CALL / WHATSAPP / CHATBOT FLOAT */
+        .call-btn {
+            position: fixed;
+            right: 162px;
+            bottom: 22px;
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(135deg, #25D366 0%, var(--gold-light) 50%, var(--gold) 100%);
+            color: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 999;
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15), 0 10px 25px rgba(0,0,0,.5), 0 0 20px rgba(197, 160, 89, 0.45);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .call-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 0 4px rgba(197,160,89,0.25), 0 12px 30px rgba(0,0,0,.6), 0 0 28px rgba(197,160,89,0.6);
+        }
+
         .whatsapp {
             position: fixed;
             right: 22px;
@@ -761,17 +942,18 @@
             justify-content: center;
             font-size: 27px;
             z-index: 999;
-            box-shadow: 0 8px 25px rgba(0,0,0,.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,.6), 0 0 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
         }
+        .whatsapp:hover { transform: scale(1.1) rotate(5deg); }
 
-        /* CHATBOT FLOAT */
         .chatbot-float {
             position: fixed;
             right: 92px;
             bottom: 22px;
             width: 58px;
             height: 58px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: #000;
             border: none;
             border-radius: 50%;
@@ -780,9 +962,11 @@
             justify-content: center;
             font-size: 24px;
             z-index: 999;
-            box-shadow: 0 8px 25px rgba(0,0,0,.45);
+            box-shadow: 0 10px 25px rgba(0,0,0,.6), 0 0 15px rgba(197, 160, 89, 0.4);
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
+        .chatbot-float:hover { transform: scale(1.1); }
 
         .chatbot-panel {
             position: fixed;
@@ -791,14 +975,15 @@
             width: min(360px, calc(100vw - 20px));
             background: rgba(18, 18, 18, 0.98);
             border: 1px solid var(--border);
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
             z-index: 998;
             opacity: 0;
             visibility: hidden;
             transform: translateY(18px);
             transition: 0.25s ease;
+            backdrop-filter: blur(15px);
         }
 
         .chatbot-panel.open {
@@ -951,48 +1136,89 @@
         }
 
         @media (max-width: 768px) {
-            .menu-btn { display: block; }
             .process-wrapper { grid-template-columns: 1fr; gap: 35px; }
             .process-line { top: 0; bottom: 0; left: 50%; right: auto; width: 1px; height: auto; }
             .process-card { max-width: 400px; width: 100%; margin: auto; }
-            .nav-links {
-                position: absolute;
-                top: 78px; left: 0; width: 100%;
-                display: none; flex-direction: column;
-                background: #111; padding: 25px;
-            }
-            .nav-links.active { display: flex; }
             .hero { min-height: 90vh; }
             .form-grid { grid-template-columns: 1fr; }
             .full { grid-column: auto; }
             section { padding: 75px 0; }
             .wipe-wrapper { height: 340px; }
+
+            /* Mobile Par WhatsApp aur Chatbot Size Chota Karna */
+            .call-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+                right: 128px;
+                bottom: 15px;
+            }
+
+            .whatsapp {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .chatbot-float {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+                right: 70px;
+                bottom: 15px;
+            }
+
+            .chatbot-panel {
+                right: 10px;
+                bottom: 75px;
+                width: calc(100vw - 20px);
+            }
         }
     </style>
+
+<style id="image-quality-fixes">
+.sd-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background: #151515;
+}
+.sd-img {
+    overflow: hidden;
+}
+</style>
+
 </head>
 
 <body>
-
 <header>
-  <nav class="navbar">
-    <div class="logo">
-        <a href="#home">GetDustify<span>.</span></a>
-    </div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="services.html">Services</a></li> 
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="booking.html" class="nav-btn">Book Now</a></li> 
-    </ul>
-</nav>
+    <nav class="navbar container">
+        <div class="logo">
+            <a href="index.html">Get<span>Dustify</span></a>
+        </div>
+
+        <!-- Navigation Links (always visible, no hamburger) -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="services.html">Services</a></li> 
+            <li><a href="index.html#why-us">Why Us</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="booking.html" class="nav-btn">Book Now</a></li> 
+        </ul>
+    </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
     <div class="container">
         <div class="hero-content">
+
+
             <div class="badge">Professional Home & Lifestyle Services</div>
             <h1>Your Space.<br><span>Our Expertise.</span></h1>
             <p>From deep cleaning and pest control to AC repair, car detailing and complete home maintenance — GetDustify is your trusted one-stop service partner in Lahore.</p>
@@ -1101,54 +1327,74 @@
         </p>
 
         <div class="services-grid">
-            <!-- Service 1 -->
+            <!-- Service 1: AC Repairing & Maintenance -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="AC Repairing & Maintenance">
+                <div class="service-icon-wrap" role="img" aria-label="AC Repairing & Maintenance">
+                    <svg viewBox="0 0 64 64"><rect x="8" y="16" width="48" height="20" rx="4"/><circle cx="18" cy="26" r="1.6" fill="#d6a84b" stroke="none"/><circle cx="26" cy="26" r="1.6" fill="#d6a84b" stroke="none"/><path d="M16 40c2 4 2 8 0 12"/><path d="M28 40c2 4 2 8 0 12"/><path d="M40 40c2 4 2 8 0 12"/></svg>
+                </div>
                 <h4>AC Repairing & Maintenance</h4>
             </a>
-            <!-- Service 2 -->
+            <!-- Service 2: Home Deep Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" alt="Home Deep Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Home Deep Cleaning">
+                    <svg viewBox="0 0 64 64"><path d="M27 10h8v6h-8z"/><path d="M23 22l4-6h10l4 6v28a4 4 0 0 1-4 4H27a4 4 0 0 1-4-4V22z"/><path d="M23 34h18"/><path d="M46 12l4-4"/><path d="M50 18h6"/><path d="M42 22l3-3"/></svg>
+                </div>
                 <h4>Home Deep Cleaning</h4>
             </a>
-            <!-- Service 3 -->
+            <!-- Service 3: Sofa Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Sofa Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Sofa Cleaning">
+                    <svg viewBox="0 0 64 64"><path d="M12 30a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v6H12z"/><path d="M8 36h48v10a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z"/><path d="M8 36v-4a4 4 0 0 1 4-4h4"/><path d="M56 36v-4a4 4 0 0 0-4-4h-4"/><path d="M16 50v4"/><path d="M48 50v4"/></svg>
+                </div>
                 <h4>Sofa Cleaning</h4>
             </a>
-            <!-- Service 4 -->
+            <!-- Service 4: Carpet & Rug Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Carpet & Rug Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Carpet & Rug Cleaning">
+                    <svg viewBox="0 0 64 64"><rect x="10" y="16" width="44" height="32" rx="2"/><rect x="16" y="22" width="32" height="20" rx="1"/><path d="M10 24h6"/><path d="M10 32h6"/><path d="M10 40h6"/><path d="M48 24h6"/><path d="M48 32h6"/><path d="M48 40h6"/></svg>
+                </div>
                 <h4>Carpet & Rug Cleaning</h4>
             </a>
-            <!-- Service 5 -->
+            <!-- Service 5: Fumigation & Pest Control -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=800&q=80" alt="Fumigation & Pest Control">
+                <div class="service-icon-wrap" role="img" aria-label="Fumigation & Pest Control">
+                    <svg viewBox="0 0 64 64"><ellipse cx="26" cy="34" rx="10" ry="7"/><circle cx="18" cy="28" r="3"/><path d="M14 34l-6-4"/><path d="M14 38l-6 4"/><path d="M20 42l-4 6"/><path d="M32 42l4 6"/><path d="M36 34l6-4"/><path d="M36 38l6 4"/><path d="M46 16l4-4"/><path d="M52 20h6"/><path d="M44 24l4-4"/></svg>
+                </div>
                 <h4>Fumigation & Pest Control</h4>
             </a>
-            <!-- Service 6 -->
+            <!-- Service 6: Water Tank Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Water Tank Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Water Tank Cleaning">
+                    <svg viewBox="0 0 64 64"><ellipse cx="32" cy="16" rx="18" ry="6"/><path d="M14 16v24c0 3 8 6 18 6s18-3 18-6V16"/><ellipse cx="32" cy="46" rx="18" ry="6"/><path d="M32 24v12"/></svg>
+                </div>
                 <h4>Water Tank Cleaning</h4>
             </a>
-            <!-- Service 7 -->
+            <!-- Service 7: Car Wash & Detailing -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80" alt="Car Wash & Detailing">
+                <div class="service-icon-wrap" role="img" aria-label="Car Wash & Detailing">
+                    <svg viewBox="0 0 64 64"><path d="M10 38l4-12a4 4 0 0 1 4-3h28a4 4 0 0 1 4 3l4 12"/><path d="M8 38h48v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2H18v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z"/><circle cx="20" cy="38" r="3"/><circle cx="44" cy="38" r="3"/><path d="M22 12l2-4"/><path d="M32 10V6"/><path d="M42 12l-2-4"/></svg>
+                </div>
                 <h4>Car Wash & Detailing</h4>
             </a>
-            <!-- Service 8 -->
+            <!-- Service 8: Commercial & Office Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80" alt="Commercial Office Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Commercial & Office Cleaning">
+                    <svg viewBox="0 0 64 64"><rect x="16" y="10" width="32" height="44" rx="2"/><path d="M22 18h4"/><path d="M30 18h4"/><path d="M38 18h4"/><path d="M22 26h4"/><path d="M30 26h4"/><path d="M38 26h4"/><path d="M22 34h4"/><path d="M30 34h4"/><path d="M38 34h4"/><rect x="28" y="42" width="8" height="12"/></svg>
+                </div>
                 <h4>Commercial & Office Cleaning</h4>
             </a>
-            <!-- Service 9 -->
+            <!-- Service 9: Kitchen Deep Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Kitchen Deep Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Kitchen Deep Cleaning">
+                    <svg viewBox="0 0 64 64"><path d="M16 28h32v14a10 10 0 0 1-10 10H26a10 10 0 0 1-10-10z"/><path d="M10 28h44"/><path d="M8 22l4 6"/><path d="M56 22l-4 6"/><path d="M32 12v8"/><path d="M24 8c0 3 3 3 3 6"/><path d="M40 8c0 3-3 3-3 6"/></svg>
+                </div>
                 <h4>Kitchen Deep Cleaning</h4>
             </a>
-            <!-- Service 10 -->
+            <!-- Service 10: Bathroom Deep Cleaning -->
             <a href="services.html" class="service-card">
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Bathroom Deep Cleaning">
+                <div class="service-icon-wrap" role="img" aria-label="Bathroom Deep Cleaning">
+                    <svg viewBox="0 0 64 64"><path d="M8 32h48v6a12 12 0 0 1-12 12H20A12 12 0 0 1 8 38z"/><path d="M8 32a4 4 0 0 1 4-4h4"/><path d="M44 20a6 6 0 0 1 6 6v6"/><path d="M44 14v6"/><path d="M16 50v4"/><path d="M48 50v4"/></svg>
+                </div>
                 <h4>Bathroom Deep Cleaning</h4>
             </a>
         </div>
@@ -1159,15 +1405,15 @@
 <section style="background: linear-gradient(135deg, #141414, #080808); padding: 60px 0; border-top: 1px solid var(--border);">
     <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
         <div>
-            <h2 style="font-size: 42px; color: var(--gold); font-family: 'Playfair Display', serif;">3,500+</h2>
+            <h2 style="font-size: 42px; color: var(--gold); font-family: 'Playfair Display', serif; text-shadow: 0 4px 10px rgba(197,160,89,0.3);">3,500+</h2>
             <p style="color: var(--muted); font-size: 14px; margin-top: 5px;">Happy Lahore Homes</p>
         </div>
         <div>
-            <h2 style="font-size: 42px; color: var(--gold); font-family: 'Playfair Display', serif;">12+</h2>
+            <h2 style="font-size: 42px; color: var(--gold); font-family: 'Playfair Display', serif; text-shadow: 0 4px 10px rgba(197,160,89,0.3);">12+</h2>
             <p style="color: var(--muted); font-size: 14px; margin-top: 5px;">Professional Services</p>
         </div>
         <div>
-            <h2 style="font-size: 42px; color: var(--gold); font-family: 'Playfair Display', serif;">100%</h2>
+            <h2 style="font-size: 42px; color: var(--gold); font-family: 'Playfair Display', serif; text-shadow: 0 4px 10px rgba(197,160,89,0.3);">100%</h2>
             <p style="color: var(--muted); font-size: 14px; margin-top: 5px;">Satisfaction Guaranteed</p>
         </div>
     </div>
@@ -1221,7 +1467,7 @@
             <p>Select one or more services you need and send your request directly to WhatsApp.</p>
         </div>
 
-        <div class="customizer-box" style="background: var(--card); padding: 35px; border-radius: 20px; border: 1px solid var(--border); max-width: 650px; margin: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+        <div class="customizer-box" style="background: linear-gradient(145deg, #181818, #101010); padding: 35px; border-radius: 20px; border: 1px solid var(--border); max-width: 650px; margin: auto; box-shadow: 0 25px 50px rgba(0,0,0,0.6);">
             <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 20px; text-align: center;">Build Your Package</h3>
 
             <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px;">Select Services (choose one or more) *</label>
@@ -1392,7 +1638,7 @@
                     <option value="★★★☆☆">3 Stars</option>
                 </select>
                 <textarea id="reviewText" placeholder="Write your review..." required></textarea>
-                <button class="btn btn-primary form-btn" type="submit">Submit Review</button>
+                <button class="btn btn-primary form-btn" type="submit">Send Review on WhatsApp 📲</button>
             </form>
         </div>
     </div>
@@ -1406,7 +1652,7 @@
             <h2>Frequently Asked Questions</h2>
         </div>
         
-        <div class="faq-item" style="background: var(--card); border: 1px solid var(--border); margin-bottom: 15px; border-radius: 12px; overflow: hidden;">
+        <div class="faq-item" style="background: linear-gradient(145deg, #181818, #101010); border: 1px solid var(--border); margin-bottom: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
             <button class="faq-question" onclick="toggleFaq(this)" style="width: 100%; background: none; border: none; color: white; padding: 20px; text-align: left; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between;">
                 <span>Are your cleaning products safe for kids and pets?</span> <span>+</span>
             </button>
@@ -1415,7 +1661,7 @@
             </div>
         </div>
 
-        <div class="faq-item" style="background: var(--card); border: 1px solid var(--border); margin-bottom: 15px; border-radius: 12px; overflow: hidden;">
+        <div class="faq-item" style="background: linear-gradient(145deg, #181818, #101010); border: 1px solid var(--border); margin-bottom: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
             <button class="faq-question" onclick="toggleFaq(this)" style="width: 100%; background: none; border: none; color: white; padding: 20px; text-align: left; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between;">
                 <span>Do I need to provide any cleaning supplies or equipment?</span> <span>+</span>
             </button>
@@ -1512,7 +1758,8 @@
     </div>
 </div>
 
-<a class="whatsapp" href="https://wa.me/923712474554" target="_blank">💬</a>
+<a class="call-btn" href="tel:+923712474554" aria-label="Call GetDustify">📞</a>
+<a class="whatsapp" href="https://wa.me/923712474554" target="_blank" aria-label="Chat on WhatsApp">💬</a>
 
 <script>
     // WIPE REVEAL SLIDER
@@ -1678,10 +1925,6 @@
         window.open("https://wa.me/923712474554?text=" + encodeURIComponent(whatsappMessage), "_blank");
     }
 
-    function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-    }
-
     const chatbotPanel = document.getElementById("chatbotPanel");
     const chatbotToggle = document.getElementById("chatbotToggle");
     const chatbotClose = document.getElementById("chatbotClose");
@@ -1695,6 +1938,27 @@
         bubble.textContent = text;
         chatbotMessages.appendChild(bubble);
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // The chatbot now calls our own /api/chat serverless function instead of
+    // OpenAI directly. The API key lives only in Vercel's environment variables
+    // on the server, never in this file, so it can't be stolen via "view source".
+    async function getChatbotReplyFromGPT(message) {
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+
+            if (!response.ok) throw new Error("Chat proxy failed");
+
+            const data = await response.json();
+            return data.reply ? data.reply.trim() : null;
+        } catch (error) {
+            console.warn("GPT chatbot fallback failed:", error);
+            return null;
+        }
     }
 
     function detectLanguage(message) {
@@ -1760,28 +2024,33 @@
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
 
+    function openDirectWhatsApp(message) {
+        const url = "https://wa.me/923712474554?text=" + encodeURIComponent(message);
+        window.open(url, "_blank");
+    }
+
     function sendChatbotMessage(rawMessage) {
         const message = rawMessage.trim();
         if (!message) return;
 
         addChatbotMessage(message, "user");
-        const reply = getChatbotReply(message);
+
+        const localReply = getChatbotReply(message);
+        chatbotInput.value = "";
 
         setTimeout(() => {
-            if (!reply) {
+            if (!localReply) {
                 const unknownMessage = getUnknownQuestionMessage(message);
                 addChatbotMessage(unknownMessage, "bot");
                 addChatbotWhatsAppButton(message);
                 return;
             }
 
-            addChatbotMessage(reply, "bot");
+            addChatbotMessage(localReply, "bot");
             if (message.toLowerCase().includes("book") || message.toLowerCase().includes("booking")) {
                 addChatbotMessage("You can also send your request directly on WhatsApp for faster confirmation.", "bot");
             }
         }, 250);
-
-        chatbotInput.value = "";
     }
 
     chatbotToggle.addEventListener("click", () => {
@@ -1807,39 +2076,40 @@
 
     document.querySelectorAll(".chatbot-quick button").forEach((button) => {
         button.addEventListener("click", () => {
-            sendChatbotMessage(button.dataset.message);
+            const message = button.dataset.message || "";
+            const lowerMessage = message.toLowerCase();
+
+            if (lowerMessage.includes("contact")) {
+                openDirectWhatsApp("Hello GetDustify, I want to contact you. Please assist me.");
+                return;
+            }
+
+            if (lowerMessage.includes("book") || lowerMessage.includes("booking")) {
+                openDirectWhatsApp("Hello GetDustify, I want to book a service. Please guide me.");
+                return;
+            }
+
+            sendChatbotMessage(message);
         });
     });
 
-    // REVIEWS LOCALSTORAGE
+    // REVIEWS — sent directly to GetDustify's WhatsApp.
+    // Customer fills the form, WhatsApp opens with the review pre-written,
+    // and the owner can add it to the site manually after checking it.
     const reviewForm = document.getElementById("reviewForm");
-    const reviewsContainer = document.getElementById("reviewsContainer");
-    let savedReviews = JSON.parse(localStorage.getItem("getdustifyReviews")) || [];
-
-    function displayReviews() {
-        savedReviews.forEach(review => {
-            const card = document.createElement("div");
-            card.className = "review-card";
-            card.innerHTML = `<div class="stars">${review.rating}</div><p>"${review.text}"</p><div class="reviewer">— ${review.name}</div>`;
-            reviewsContainer.appendChild(card);
-        });
-    }
 
     reviewForm.addEventListener("submit", function(e) {
         e.preventDefault();
-        const review = {
-            name: document.getElementById("reviewName").value,
-            rating: document.getElementById("rating").value,
-            text: document.getElementById("reviewText").value
-        };
-        savedReviews.push(review);
-        localStorage.setItem("getdustifyReviews", JSON.stringify(savedReviews));
-        alert("Thank you for your review!");
-        reviewForm.reset();
-        location.reload();
-    });
+        const name = document.getElementById("reviewName").value.trim();
+        const rating = document.getElementById("rating").value;
+        const text = document.getElementById("reviewText").value.trim();
 
-    displayReviews();
+        const reviewMessage = `Hello GetDustify! I want to share a review.\n\nName: ${name}\nRating: ${rating}\nReview: ${text}`;
+        const whatsappUrl = "https://wa.me/923712474554?text=" + encodeURIComponent(reviewMessage);
+
+        window.open(whatsappUrl, "_blank");
+        reviewForm.reset();
+    });
 </script>
 
 </body>
