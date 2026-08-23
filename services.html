@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | GetDustify</title>
 
-```
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -73,11 +72,29 @@
     .logo {
         font-size: 25px;
         font-weight: 800;
-        letter-spacing: -1px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: inline-block;
+        background: linear-gradient(135deg, #fceabb 0%, var(--gold-light) 25%, var(--gold) 50%, var(--gold-light) 75%, #fceabb 100%);
+        background-size: 220% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.55));
+        transition: background-position 0.6s ease, filter 0.3s ease;
+    }
+
+    .logo:hover {
+        background-position: right center;
+        filter: drop-shadow(0 0 16px rgba(197, 160, 89, 0.85));
     }
 
     .logo span {
-        color: var(--gold);
+        background: inherit;
+        background-size: inherit;
+        -webkit-background-clip: inherit;
+        background-clip: inherit;
+        -webkit-text-fill-color: inherit;
     }
 
     .nav-links {
@@ -221,42 +238,6 @@
         margin: auto;
     }
 /* BEFORE / AFTER WIPE REVEAL SECTION */
-.wipe-section {
-    background: #0f0f0f;
-    padding: 100px 0;
-    overflow: hidden;
-}
-
-.wipe-container {
-    max-width: 900px;
-    margin: auto;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.wipe-wrapper {
-    position: relative;
-    width: 100%;
-    height: 480px;
-    overflow: hidden;
-}
-
-.wipe-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-}
-
-/* BEFORE / AFTER WIPE REVEAL SECTION (UPDATED) */
 .wipe-section {
     background: #0f0f0f;
     padding: 100px 0;
@@ -1189,41 +1170,24 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-        .menu-btn {
-            display: block;
+        .process-wrapper {
+            grid-template-columns: 1fr;
+            gap: 35px;
         }
-.process-wrapper {
-    grid-template-columns: 1fr;
-    gap: 35px;
-}
 
-.process-line {
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: auto;
-    width: 1px;
-    height: auto;
-}
+        .process-line {
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: auto;
+            width: 1px;
+            height: auto;
+        }
 
-.process-card {
-    max-width: 400px;
-    width: 100%;
-    margin: auto;
-}
-        .nav-links {
-            position: absolute;
-            top: 78px;
-            left: 0;
+        .process-card {
+            max-width: 400px;
             width: 100%;
-            display: none;
-            flex-direction: column;
-            background: #111;
-            padding: 25px;
-        }
-
-        .nav-links.active {
-            display: flex;
+            margin: auto;
         }
 
         .hero {
@@ -1293,9 +1257,26 @@
         background: #0e0e0e; border: 1px solid #333; border-radius: 8px;
         color: white; outline: none; font-family: inherit;
     }
-</style>
 
-```
+    /* ===== MOBILE NAVBAR (always visible, no hamburger) ===== */
+    @media (max-width: 768px) {
+        .navbar { flex-wrap: wrap; row-gap: 8px; min-height: auto; padding: 12px 0; }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 14px;
+        }
+        .nav-links a { font-size: 12.5px; }
+        .nav-btn { padding: 7px 14px; }
+        .logo { font-size: 20px; }
+    }
+
+    @media (max-width: 380px) {
+        .nav-links { gap: 6px 10px; }
+        .nav-links a { font-size: 11.5px; }
+    }
+</style>
 
 </head>
 
@@ -1304,8 +1285,6 @@
 <header>
     <div class="container navbar">
         <a href="getdustify.html#home" class="logo">Get<span>Dustify</span></a>
-
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
         <ul class="nav-links" id="navLinks">
             <li><a href="getdustify.html#home">Home</a></li>
@@ -1411,7 +1390,7 @@
                 <p>Professional floor scrubbing, polishing and sanitizing for tile, marble, wood and vinyl surfaces.</p>
                 <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Floor Cleaning')">Book This Service</button>
             </div>
-            <div class="sd-img"><img src="https://images.unsplash.com/photo-1686178827149-6d55c72d81df?auto=format&fit=crop&w=900&q=80"></div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1740657254989-42fe9c3b8cce?auto=format&fit=crop&w=900&q=80"></div>
         </div>
 
         <div class="service-detail-card">
@@ -1458,7 +1437,7 @@
                 <p>Professional carpet shampooing and steam cleaning that lifts dirt, dust mites and stains from deep within the fibers.</p>
                 <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Carpet Cleaning')">Book This Service</button>
             </div>
-            <div class="sd-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"></div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=900&q=80"></div>
         </div>
 
         <div class="service-detail-card">
@@ -1467,7 +1446,7 @@
                 <p>Sanitizing mattress cleaning that targets dust mites, stains and odors for a healthier night's sleep.</p>
                 <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Mattress Cleaning')">Book This Service</button>
             </div>
-            <div class="sd-img"><img src="https://images.unsplash.com/photo-1658500353815-4d22b7cc6dd3?auto=format&fit=crop&w=900&q=80"></div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1686178827149-6d55c72d81df?auto=format&fit=crop&w=900&q=80"></div>
         </div>
 
         <div class="service-detail-card">
@@ -1476,7 +1455,7 @@
                 <p>Gentle yet thorough curtain and drapery cleaning that removes dust and odors without damaging delicate fabrics.</p>
                 <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Curtain Cleaning')">Book This Service</button>
             </div>
-            <div class="sd-img"><img src="https://images.unsplash.com/photo-1598402019828-273d563e4554?auto=format&fit=crop&w=900&q=80"></div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1599280611965-bef72efc48fb?auto=format&fit=crop&w=900&q=80"></div>
         </div>
 
         <div class="service-detail-card">
@@ -1485,7 +1464,7 @@
                 <p>Detailed blind cleaning that reaches every slat, removing built-up dust and keeping your windows looking crisp.</p>
                 <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Blinds Cleaning')">Book This Service</button>
             </div>
-            <div class="sd-img"><img src="https://images.unsplash.com/photo-1590251024078-8a6d9f90b02d?auto=format&fit=crop&w=900&q=80"></div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1512479373983-bd28a541041b?auto=format&fit=crop&w=900&q=80"></div>
         </div>
 
         <div class="category-heading"><h3>Pest Management</h3></div>
@@ -1505,7 +1484,7 @@
                 <p>Comprehensive fumigation services that eliminate insects and larvae at the source, for lasting protection.</p>
                 <button class="btn btn-primary" style="border:none; cursor:pointer;" onclick="openBookingModal('Fumigation')">Book This Service</button>
             </div>
-            <div class="sd-img"><img src="https://images.unsplash.com/photo-1711900177627-1182b446bc8f?auto=format&fit=crop&w=900&q=80"></div>
+            <div class="sd-img"><img src="https://images.unsplash.com/photo-1747659629851-a92bd71149f6?auto=format&fit=crop&w=900&q=80"></div>
         </div>
 
         <div class="service-detail-card">
@@ -1573,10 +1552,6 @@
 </div>
 
 <script>
-    function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-    }
-
     const chatbotPanel = document.getElementById("chatbotPanel");
     const chatbotToggle = document.getElementById("chatbotToggle");
     const chatbotClose = document.getElementById("chatbotClose");
