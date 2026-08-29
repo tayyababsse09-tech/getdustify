@@ -1,5 +1,5 @@
-import { kv } from "@vercel/kv";
-
+import { Redis } from "@upstash/redis";
+const kv = Redis.fromEnv();
 // GET  /api/reviews  -> { reviews: [ ...approved reviews ] }
 // POST /api/reviews   body: { name, rating, text } -> saves as PENDING (not shown yet)
 
