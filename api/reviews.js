@@ -1,6 +1,8 @@
 import { Redis } from "@upstash/redis";
-const kv = Redis.fromEnv();
-// GET  /api/reviews  -> { reviews: [ ...approved reviews ] }
+const kv = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});// GET  /api/reviews  -> { reviews: [ ...approved reviews ] }
 // POST /api/reviews   body: { name, rating, text } -> saves as PENDING (not shown yet)
 
 export default async function handler(req, res) {
