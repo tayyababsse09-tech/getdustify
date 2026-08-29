@@ -2156,6 +2156,33 @@
     // approved from the admin dashboard, to keep out spam/fake reviews.
     const reviewForm = document.getElementById("reviewForm");
     const reviewsContainer = document.getElementById("reviewsContainer");
+    // REVIEWS — backed by the database now, instead of localStorage.
+    // New reviews are saved as "pending" and only appear on the site once
+    // approved from the admin dashboard, to keep out spam/fake reviews.
+    const reviewForm = document.getElementById("reviewForm");
+    const reviewsContainer = document.getElementById("reviewsContainer");
+
+    function compressImage(file, maxWidth = 800, quality = 0.7) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const scale = Math.min(1, maxWidth / img.width);
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    resolve(canvas.toDataURL("image/jpeg", quality));
+                };
+                img.onerror = reject;
+                img.src = e.target.result;
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
 
     async function loadApprovedReviews() {
         try {
@@ -2166,7 +2193,10 @@
                 card.className = "review-card";
                 const safeText = review.text.replace(/</g, "&lt;");
                 const safeName = review.name.replace(/</g, "&lt;");
-                card.innerHTML = `<div class="stars">${review.rating}</div><p>"${safeText}"</p><div class="reviewer">— ${safeName}</div>`;
+                const photoHtml = review.photo
+                    ? `<img src="${review.photo}" alt="${safeName}'s photo" style="width:100%; border-radius:8px; margin-bottom:12px; max-height:200px; object-fit:cover;">`
+                    : "";
+                card.innerHTML = `${photoHtml}<div class="stars">${review.rating}</div><p>"${safeText}"</p><div class="reviewer">— ${safeName}</div>`;
                 reviewsContainer.appendChild(card);
             });
         } catch (err) {
@@ -2176,10 +2206,27 @@
 
     reviewForm.addEventListener("submit", async function(e) {
         e.preventDefault();
+        const photoFile = document.getElementById("reviewPhoto").files[0];
+        let photo = null;
+
+        if (photoFile) {
+            if (photoFile.size > 5 * 1024 * 1024) {
+                alert("Photo is too large. Please choose an image under 5MB.");
+                return;
+            }
+            try {
+                photo = await compressImage(photoFile);
+            } catch (err) {
+                alert("Could not process the photo, please try a different image.");
+                return;
+            }
+        }
+
         const review = {
             name: document.getElementById("reviewName").value,
             rating: document.getElementById("rating").value,
-            text: document.getElementById("reviewText").value
+            text: document.getElementById("reviewText").value,
+            photo: photo
         };
         try {
             await fetch("/api/reviews", {
@@ -2194,7 +2241,6 @@
         }
     });
     loadApprovedReviews();
-</script>
 
 </body>
 </html>
