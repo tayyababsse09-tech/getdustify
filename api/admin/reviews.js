@@ -1,6 +1,8 @@
 import { Redis } from "@upstash/redis";
-const kv = Redis.fromEnv();
-// All requests must include header: x-admin-password: <ADMIN_PASSWORD env var>
+const kv = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});// All requests must include header: x-admin-password: <ADMIN_PASSWORD env var>
 //
 // GET    /api/admin/reviews             -> { pending: [...] }
 // POST   /api/admin/reviews  body: { id, action: "approve" | "reject" }
