@@ -105,7 +105,7 @@
     }
   }
 
-  function renderPending(pending) {
+    function renderPending(pending) {
     const list = document.getElementById("pendingList");
     const countLine = document.getElementById("countLine");
     countLine.textContent = pending.length
@@ -118,14 +118,17 @@
     }
 
     list.innerHTML = pending.map(r => {
-      const stars = "★".repeat(Number(r.rating) || 0);
       const safeName = (r.name || "").replace(/</g, "&lt;");
       const safeText = (r.text || "").replace(/</g, "&lt;");
+      const photoHtml = r.photo
+        ? `<img src="${r.photo}" alt="${safeName}'s photo" style="max-width:100%; border-radius:8px; margin-bottom:10px; max-height:220px; object-fit:cover;">`
+        : "";
       return `
         <div class="review-card" data-id="${r.id}">
+          ${photoHtml}
           <div class="review-top">
             <span class="review-name">${safeName}</span>
-            <span class="review-stars">${stars}</span>
+            <span class="review-stars">${r.rating}</span>
           </div>
           <div class="review-text">"${safeText}"</div>
           <div class="review-actions">
@@ -137,7 +140,6 @@
       `;
     }).join("");
   }
-
   async function act(id, action) {
     const statusEl = document.getElementById(`status-${id}`);
     statusEl.textContent = action === "approve" ? "Approving…" : "Rejecting…";
