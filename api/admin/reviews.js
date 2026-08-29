@@ -1,5 +1,5 @@
-import { kv } from "@vercel/kv";
-
+import { Redis } from "@upstash/redis";
+const kv = Redis.fromEnv();
 // All requests must include header: x-admin-password: <ADMIN_PASSWORD env var>
 //
 // GET    /api/admin/reviews             -> { pending: [...] }
