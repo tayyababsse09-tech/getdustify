@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>GetDustify — Review Admin</title>
+<style>
+  :root {
+    --gold: #c5a059;
+    --gold-light: #e5c477;
+    --black: #0b0b0b;
+    --card: #171717;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--black);
+    color: #eee;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+  h1 { color: var(--gold-light); font-size: 24px; margin-bottom: 4px; }
+  .sub { color: #999; font-size: 14px; margin-bottom: 30px; }
+
+  /* login */
+  #loginBox { max-width: 360px; margin: 80px auto; text-align: center; }
+  #loginBox input {
+    width: 100%; padding: 12px 14px; margin: 16px 0 10px;
+    border-radius: 8px; border: 1px solid #333; background: #111; color: #eee; font-size: 15px;
+  }
+  #loginBox button, .btn {
+    background: var(--gold); color: #111; border: none; padding: 10px 18px;
+    border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px;
+  }
+  #loginBox button:hover, .btn:hover { background: var(--gold-light); }
+  #loginError { color: #e57373; font-size: 13px; min-height: 18px; margin-top: 6px; }
+
+  /* review cards */
+  .review-card {
+    background: var(--card); border: 1px solid #2a2a2a; border-radius: 10px;
+    padding: 18px; margin-bottom: 14px;
+  }
+  .review-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .review-name { font-weight: 700; color: var(--gold-light); }
+  .review-stars { color: var(--gold); font-size: 14px; }
+  .review-text { color: #ccc; font-size: 15px; line-height: 1.5; margin: 8px 0 14px; white-space: pre-wrap; }
+  .review-actions { display: flex; gap: 10px; }
+  .approve-btn { background: #4caf50; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+  .approve-btn:hover { background: #5fbf63; }
+  .reject-btn { background: #333; color: #ddd; border: 1px solid #555; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+  .reject-btn:hover { background: #444; }
+  .empty { color: #777; text-align: center; padding: 60px 0; }
+  .status-msg { font-size: 13px; color: #999; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div id="loginBox">
+  <h1>GetDustify Admin</h1>
+  <div class="sub">Enter the admin password to manage reviews</div>
+  <input type="password" id="passwordInput" placeholder="Admin password">
+  <br>
+  <button onclick="login()">Log in</button>
+  <div id="loginError"></div>
+</div>
+
+<div class="wrap" id="adminPanel" style="display:none;">
+  <h1>Pending Reviews</h1>
+  <div class="sub" id="countLine">Loading…</div>
+  <div id="pendingList"></div>
+</div>
+
+<script>
+  let ADMIN_PASSWORD = "";
+
+  function login() {
+    const input = document.getElementById("passwordInput").value;
+    if (!input) return;
+    ADMIN_PASSWORD = input;
+    fetchPending(true);
+  }
+
+  document.getElementById("passwordInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") login();
+  });
+
+  async function fetchPending(isLoginAttempt) {
+    try {
+      const res = await fetch("/api/admin/reviews", {
+        headers: { "x-admin-password": ADMIN_PASSWORD }
+      });
+      if (res.status === 401) {
+        if (isLoginAttempt) {
+          document.getElementById("loginError").textContent = "Wrong password, try again.";
+        }
+        return;
+      }
+      const data = await res.json();
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("adminPanel").style.display = "block";
+      renderPending(data.pending || []);
+    } catch (err) {
+      document.getElementById("loginError").textContent = "Something went wrong. Try again.";
+    }
+  }
+
+  function renderPending(pending) {
+    const list = document.getElementById("pendingList");
+    const countLine = document.getElementById("countLine");
+    countLine.textContent = pending.length
+      ? `${pending.length} review(s) waiting for approval`
+      : "";
+
+    if (!pending.length) {
+      list.innerHTML = `<div class="empty">No pending reviews right now.</div>`;
+      return;
+    }
+
+    list.innerHTML = pending.map(r => {
+      const stars = "★".repeat(Number(r.rating) || 0);
+      const safeName = (r.name || "").replace(/</g, "&lt;");
+      const safeText = (r.text || "").replace(/</g, "&lt;");
+      return `
+        <div class="review-card" data-id="${r.id}">
+          <div class="review-top">
+            <span class="review-name">${safeName}</span>
+            <span class="review-stars">${stars}</span>
+          </div>
+          <div class="review-text">"${safeText}"</div>
+          <div class="review-actions">
+            <button class="approve-btn" onclick="act('${r.id}','approve')">Approve</button>
+            <button class="reject-btn" onclick="act('${r.id}','reject')">Reject</button>
+          </div>
+          <div class="status-msg" id="status-${r.id}"></div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  async function act(id, action) {
+    const statusEl = document.getElementById(`status-${id}`);
+    statusEl.textContent = action === "approve" ? "Approving…" : "Rejecting…";
+    try {
+      const res = await fetch("/api/admin/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": ADMIN_PASSWORD
+        },
+        body: JSON.stringify({ id, action })
+      });
+      if (!res.ok) throw new Error("failed");
+      fetchPending(false);
+    } catch (err) {
+      statusEl.textContent = "Failed — try again.";
+    }
+  }
+</script>
+
+</body>
+</html>
